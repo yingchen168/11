@@ -1,0 +1,42 @@
+[
+  {
+    "market": "Will Lars Løkke Rasmussen be the next prime minister of Denmark after the 2026 parliamentary elections?",
+    "category": "政治",
+    "direction": "No",
+    "prob": 0.957,
+    "spread": 0.004,
+    "liquidity": 374151.89658900007,
+    "end": "2026-03-24 00:00 UTC",
+    "slug": "will-lars-lkke-rasmussen-be-the-next-prime-minister-of-denmark-after-the-2026-parliamentary-elections"
+  },
+  {
+    "market": "Will Donald Trump post 60-79 Truth Social posts from March 17 to March 24, 2026?",
+    "category": "政治",
+    "direction": "No",
+    "prob": 0.844,
+    "spread": 0.006,
+    "liquidity": 26052.225213000016,
+    "end": "2026-03-24 16:00 UTC",
+    "slug": "donald-trump-of-truth-social-posts-march-17-march-24-60-79"
+  },
+  {
+    "market": "Will the price of Bitcoin be between $64,000 and $66,000 on March 23?",
+    "category": "加密",
+    "direction": "No",
+    "prob": 0.878,
+    "spread": 0.004,
+    "liquidity": 18539.53874,
+    "end": "2026-03-23 16:00 UTC",
+    "slug": "will-the-price-of-bitcoin-be-between-64000-66000-on-march-23"
+  },
+  {
+    "market": "Will the price of Bitcoin be above $64,000 on March 23?",
+    "category": "加密",
+    "direction": "Yes",
+    "prob": 0.96,
+    "spread": 0.002,
+    "liquidity": 169042.89871000007,
+    "end": "2026-03-23 16:00 UTC",
+    "slug": "bitcoin-above-64k-on-march-23"
+  }
+]

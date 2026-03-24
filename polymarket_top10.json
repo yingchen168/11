@@ -1,0 +1,88 @@
+{
+  "events": [
+    {
+      "id": "242849",
+      "slug": "elon-musk-of-tweets-march-6-march-13",
+      "title": "Elon Musk # tweets March 6 - March 13, 2026?"
+    },
+    {
+      "id": "252316",
+      "slug": "elon-musk-of-tweets-march-9-march-11",
+      "title": "Elon Musk # tweets March 9 - March 11, 2026?"
+    }
+  ],
+  "candidates": 41,
+  "qualified": 5,
+  "top": [
+    {
+      "rank": 1,
+      "wallet": "0x689ae12e11aa489adb3605afd8f39040ff52779e",
+      "name": "Annica",
+      "profitTradesGte500": 6,
+      "avgProfitGte500": 2794.8284463207997,
+      "totalEstProfit": 14475.06931803465,
+      "commonPhase": {
+        "title": "Will Elon Musk post 260-279 tweets from March 6 to March 13, 2026?",
+        "outcomeIndex": 1,
+        "buyUsdc": 104131.93274,
+        "buyCount": 10
+      }
+    },
+    {
+      "rank": 2,
+      "wallet": "0x77c812f7735ad07e3ce58fd466a0e1b4346bbc8c",
+      "name": "dudukos",
+      "profitTradesGte500": 9,
+      "avgProfitGte500": 1550.3850528223368,
+      "totalEstProfit": 16493.2359422684,
+      "commonPhase": {
+        "title": "Will Elon Musk post 90-114 tweets from March 9 to March 11, 2026?",
+        "outcomeIndex": 0,
+        "buyUsdc": 5272.65953,
+        "buyCount": 94
+      }
+    },
+    {
+      "rank": 3,
+      "wallet": "0x444983d5070516b2e75ba65b8ee5ccf3e7c7e977",
+      "name": "ghostfaded",
+      "profitTradesGte500": 30,
+      "avgProfitGte500": 1457.5602648095048,
+      "totalEstProfit": 55094.41854802662,
+      "commonPhase": {
+        "title": "Will Elon Musk post 400-419 tweets from March 6 to March 13, 2026?",
+        "outcomeIndex": 0,
+        "buyUsdc": 111,
+        "buyCount": 1
+      }
+    },
+    {
+      "rank": 4,
+      "wallet": "0x6d3fa0200fec1dbcf4dd7e4408aa1e53779ca942",
+      "name": "amberheard",
+      "profitTradesGte500": 28,
+      "avgProfitGte500": 1303.2863407799682,
+      "totalEstProfit": 24804.453682272066,
+      "commonPhase": {
+        "title": "Will Elon Musk post 115-139 tweets from March 9 to March 11, 2026?",
+        "outcomeIndex": 1,
+        "buyUsdc": 2307.729999,
+        "buyCount": 3
+      }
+    },
+    {
+      "rank": 5,
+      "wallet": "0x274c3b18a52533645977039a171a96cbafad4824",
+      "name": "benben2026",
+      "profitTradesGte500": 5,
+      "avgProfitGte500": 1231.358134808152,
+      "totalEstProfit": 5161.684824003779,
+      "commonPhase": {
+        "title": "Will Elon Musk post 360-379 tweets from March 6 to March 13, 2026?",
+        "outcomeIndex": 0,
+        "buyUsdc": 2060.0829289999997,
+        "buyCount": 72
+      }
+    }
+  ]
+}

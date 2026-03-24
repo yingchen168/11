@@ -1,0 +1,26 @@
+{
+  "updatedAt": "2026-03-21T21:18:54.156Z",
+  "items": {
+    "1122960::Yes": {
+      "key": "1122960::Yes",
+      "market": "Will Manuel Saavedra win the 2026 Santa Cruz de la Sierra mayoral election?",
+      "category": "政治",
+      "direction": "Yes",
+      "probability": 94.65,
+      "spread": 0.007,
+      "liquidity": 608727,
+      "expiry": "2026-03-22 00:00 UTC"
+    },
+    "1228212::No": {
+      "key": "1228212::No",
+      "market": "Will Juan Pablo Velasco win the 2026 Santa Cruz gubernatorial election?",
+      "category": "政治",
+      "direction": "No",
+      "probability": 85.1,
+      "spread": 0.002,
+      "liquidity": 242994,
+      "expiry": "2026-03-22 00:00 UTC"
+    }
+  },
+  "count": 2
+}
