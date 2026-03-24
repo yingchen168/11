@@ -1,0 +1,15 @@
+{
+  "sent": {
+    "okx:/help/okx-to-list-perpetual-futures-for-selected-equities-03112026": "2026-03-12T00:05:00+00:00",
+    "okx:/help/okx-to-delist-several-usds-um-perpetual-futures": "2026-03-12T00:05:00+00:00",
+    "okx:/help/okx-to-delist-rss3-memefi-ghst-rio-and-sweat-spot-trading-pairs": "2026-03-12T08:36:00+00:00"
+  },
+  "updatedAt": "2026-03-12T17:36:00Z",
+  "windowHours": 24,
+  "lastCheck": {
+    "okxAnnouncements": "2026-03-12T17:36:00Z (OKX Announcements复核：顶部仍为 Mar 12 下线 RSS3/MEMEFI/GHST/RIO/SWEAT，之后为 Mar 11 既有永续上线/下线条目，未见新增上/下币、充提暂停或风险公告)",
+    "okxStatus": "2026-03-12T17:36:00Z (OKX /status 显示 No upgrades planned，未见新增重大故障或充提暂停)",
+    "bnbBlog": "2026-03-12T17:36:00Z (BNB Blog 最新仍为 2026-03-12 dApps 汇总及既有 AI/Beacon Chain sunset 内容，未见官方风险/安全事故公告)",
+    "bscscanSupplement": "2026-03-12T17:35:00Z (BscScan补充源访问受限 403/challenge，按补充源策略跳过且不影响结论)"
+  }
+}

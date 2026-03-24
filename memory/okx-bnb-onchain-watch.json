@@ -1,0 +1,18 @@
+{
+  "updatedAt": "2026-03-12T06:05:00Z",
+  "windowHours": 24,
+  "sent": {
+    "okx-opn-perp-convert-2026-03-06": "2026-03-07T15:07:24Z",
+    "okx-robo-spot-listing-2026-03-05": "2026-03-07T15:07:24Z",
+    "bnb-beacon-recovery-sunset-2026-03-04": "2026-03-07T15:07:24Z",
+    "okx-ng-perp-listing-2026-03-10": "2026-03-10T09:24:00Z",
+    "okx-usds-um-perp-delist-2026-03-11": "2026-03-11T04:05:40Z",
+    "okx-selected-equities-perp-listing-2026-03-11": "2026-03-11T09:35:00Z"
+  },
+  "lastCheck": {
+    "okxAnnouncements": "2026-03-12T06:05:00Z (OKX Announcements 可达；最新仍为 2026-03-11 两条（selected equities perp listing / USDⓈ UM perp delisting），未见新增可验证上/下币、充提暂停或风险公告)",
+    "okxStatus": "2026-03-12T06:05:00Z (OKX Status 页面可达；未检出可验证新增重大故障/充提暂停事件)",
+    "bnbBlog": "2026-03-12T06:05:00Z (BNB Chain Blog 可达；最新为生态/产品类更新，未见新增官方故障或安全风险公告)",
+    "bscscanSupplement": "2026-03-12T06:05:00Z (BscScan 补充源部分页面可达、部分受限；未发现可验证异常链上异动，按补充源策略不单独触发)"
+  }
+}

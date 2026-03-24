@@ -1,0 +1,35 @@
+{
+  "updatedAt": "2026-03-21T10:47:00Z",
+  "items": [
+    {
+      "id": "1122883",
+      "market": "Will Iván Arias win the 2026 La Paz mayoral election?",
+      "category": "政治",
+      "direction": "No",
+      "prob": 0.9585,
+      "spread": 0.005,
+      "liquidity": 78089.06,
+      "end": "2026-03-22 00:00 UTC"
+    },
+    {
+      "id": "1122896",
+      "market": "Will Waldo Albarracín win the 2026 La Paz mayoral election?",
+      "category": "政治",
+      "direction": "No",
+      "prob": 0.9395,
+      "spread": 0.003,
+      "liquidity": 325163.16,
+      "end": "2026-03-22 00:00 UTC"
+    },
+    {
+      "id": "1122960",
+      "market": "Will Manuel Saavedra win the 2026 Santa Cruz de la Sierra mayoral election?",
+      "category": "政治",
+      "direction": "Yes",
+      "prob": 0.918,
+      "spread": 0.002,
+      "liquidity": 462811.32,
+      "end": "2026-03-22 00:00 UTC"
+    }
+  ]
+}

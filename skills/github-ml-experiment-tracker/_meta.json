@@ -1,0 +1,11 @@
+{
+  "owner": "0x-professor",
+  "slug": "ml-experiment-tracker",
+  "displayName": "Ml Experiment Tracker",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1772136555876,
+    "commit": "https://github.com/openclaw/skills/commit/1861bb488b994c3375ef62021a07e9c40aeb0a2d"
+  },
+  "history": []
+}

@@ -1,0 +1,19 @@
+{
+  "updatedAt": "2026-03-22T22:49:30Z",
+  "items": {
+    "1603593": {
+      "key": "1603593",
+      "market": "Will Ethereum dip to $2,000 March 16-22?",
+      "category": "加密",
+      "direction": "No",
+      "prob": 0.8355,
+      "probability": 83.5,
+      "spread": 0.003,
+      "liquidity": 155797.89,
+      "end": "2026-03-23T04:00:00Z",
+      "expiry": "2026-03-23 04:00 UTC",
+      "line": "Will Ethereum dip to $2,000 March 16-22?｜加密｜No｜83.5%｜0.0030｜155798｜2026-03-23 04:00 UTC"
+    }
+  },
+  "count": 1
+}

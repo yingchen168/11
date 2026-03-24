@@ -210,3 +210,21 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## X Monitor Hardening (Critical)
+
+- For `x-heavy-accounts-realtime`, treat each monitored account as an independent unit with a hard budget of 35-45 seconds.
+- Primary source is `opentwitter`/6551 whenever `TWITTER_TOKEN` is available. Only use fallbacks when primary is unavailable or clearly stale.
+- Per account, try at most 2 sources total: primary plus one fallback (`xcancel`, `r.jina`, or `nitter`). Do not keep chaining fallbacks after that.
+- If an account cannot be verified within its budget or sources are degraded, skip that account and continue with the rest. Never let one account stall the full run.
+- Partial verified coverage is acceptable. Prefer finishing the run with fewer accounts over timing out the whole job.
+- If at least one account yields a verified high-signal update, summarize only those verified items.
+- If no account yields a verified new high-signal update, return `NO_REPLY`.
+- Never expose raw fetch/browser/runtime errors to the user for this task. Convert them into silent skips and continue.
+
+## Output Hygiene (Critical)
+
+- Never output raw tool/runtime errors to users (examples: "Web Fetch ... failed", stack traces, timeout internals).
+- If one data source fails, silently try alternative sources.
+- If all sources are unavailable, return a user-safe summary instead of technical errors.
+- For scheduled monitoring tasks, prefer `NO_REPLY` when there is no verified update.

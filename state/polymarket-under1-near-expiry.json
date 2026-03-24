@@ -1,0 +1,18 @@
+{
+  "updatedAt": "2026-03-21T16:47:00Z",
+  "matches": [
+    {
+      "eventId": "147506",
+      "marketId": "1122896",
+      "slug": "will-waldo-albarracn-win-the-2026-la-paz-mayoral-election",
+      "market": "Will Waldo Albarracín win the 2026 La Paz mayoral election?",
+      "category": "政治",
+      "direction": "No",
+      "prob": 0.9415,
+      "spread": 0.003,
+      "liquidity": 10071.37,
+      "volume": 325317.05,
+      "endTimeUTC": "2026-03-22 00:00 UTC"
+    }
+  ]
+}
