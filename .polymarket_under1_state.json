@@ -1,1 +1,42 @@
-{"1628631": {"market": "Will the price of Ethereum be between $2,000 and $2,100 on March 24?", "category": "加密", "direction": "No", "prob": 0.9175, "spread": 0.007, "liquidity": 12691.12, "end": "2026-03-24 16:00 UTC"}}
+[
+  {
+    "id": "1712092",
+    "question": "Will Bitcoin dip to $68,000 on March 25?",
+    "category": "crypto",
+    "direction": "No",
+    "win": 0.9505,
+    "spread": 0.005,
+    "liq": 16369.69,
+    "end": "2026-03-26T04:00:00Z"
+  },
+  {
+    "id": "1652071",
+    "question": "Will the price of Bitcoin be above $68,000 on March 26?",
+    "category": "crypto",
+    "direction": "Yes",
+    "win": 0.934,
+    "spread": 0.006,
+    "liq": 62090.55,
+    "end": "2026-03-26T16:00:00Z"
+  },
+  {
+    "id": "1662876",
+    "question": "Will the price of Bitcoin be above $66,000 on March 27?",
+    "category": "crypto",
+    "direction": "Yes",
+    "win": 0.9545,
+    "spread": 0.001,
+    "liq": 27272.11,
+    "end": "2026-03-27T16:00:00Z"
+  },
+  {
+    "id": "1662887",
+    "question": "Will the price of Bitcoin be above $76,000 on March 27?",
+    "category": "crypto",
+    "direction": "No",
+    "win": 0.956,
+    "spread": 0.004,
+    "liq": 27122.45,
+    "end": "2026-03-27T16:00:00Z"
+  }
+]
