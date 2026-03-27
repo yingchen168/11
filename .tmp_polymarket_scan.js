@@ -1,70 +1,85 @@
+const fs = require('fs');
 
-const https = require('https');
-const now = new Date('2026-03-25T16:53:00Z');
-function get(url){
-  return new Promise((resolve,reject)=>{
-    https.get(url,res=>{
-      let data='';
-      res.on('data',c=>data+=c);
-      res.on('end',()=>{
-        try{ resolve({status:res.statusCode, data: JSON.parse(data)}); }
-        catch(e){ reject(new Error('parse:'+e.message+' body:'+data.slice(0,200))); }
-      });
-    }).on('error',reject);
-  });
+const NOW = new Date('2026-03-27T04:53:00Z');
+const STATE_PATH = '/root/.openclaw/workspace/data/polymarket_under1_state.json';
+
+function classify(m) {
+  const text = [m.question, m.description, m.slug, ...(m.events||[]).map(e => [e.title,e.slug,e.description]).join(' ')].join(' ').toLowerCase();
+  const sports = /(nba|nfl|mlb|nhl|ufc|mma|formula 1|f1|soccer|football|baseball|basketball|tennis|golf|cricket|olympic|champions league|premier league|la liga|serie a|bundesliga|ncaa|march madness|stanley cup|world cup|super bowl|wimbledon|race|match|fight|game [0-9]|wins?\?|vs\.? )/;
+  const crypto = /(bitcoin|btc|ethereum|eth|solana|sol|xrp|doge|crypto|token|coin|binance|kraken|coinbase|base chain|airdrop|meme coin|market cap|onchain|staking|defi|nft|opensea|hyperliquid|satoshi)/;
+  const politics = /(election|president|presidential|senate|house|governor|mayor|prime minister|parliament|congress|minister|campaign|gop|democrat|republican|white house|trump|biden|rfk|macron|putin|zelensky|vote share|approval|cabinet|politic)/;
+  if (sports.test(text)) return '体育';
+  if (crypto.test(text)) return '加密';
+  if (politics.test(text)) return '政治';
+  return null;
 }
-(async()=>{
-  let all=[];
-  for(let offset=0; offset<2000; offset+=500){
-    const url = 'https://gamma-api.polymarket.com/markets?closed=false&active=true&limit=500&offset='+offset;
-    const resp = await get(url);
-    if(resp.status!==200) throw new Error('http '+resp.status);
-    if(!Array.isArray(resp.data) || !resp.data.length) break;
-    all = all.concat(resp.data);
-    if(resp.data.length<500) break;
+
+async function fetchAll(){
+  let offset=0, all=[];
+  while(offset<5000){
+    const url=`https://gamma-api.polymarket.com/markets?closed=false&active=true&archived=false&limit=500&offset=${offset}`;
+    const res=await fetch(url,{headers:{accept:'application/json'}});
+    if(!res.ok) throw new Error('http '+res.status);
+    const data=await res.json();
+    if(!Array.isArray(data)||data.length===0) break;
+    all.push(...data);
+    if(data.length<500) break;
+    offset += data.length;
   }
-  const picks=[];
+  return all;
+}
+
+function parseArr(v){
+  if(Array.isArray(v)) return v;
+  try { return JSON.parse(v); } catch { return []; }
+}
+
+function fmtPct(x){ return (x*100).toFixed(1)+'%'; }
+function fmtSpread(x){ return (x*100).toFixed(1)+'%'; }
+function fmtLiq(x){ return (Math.round(x)).toString()+'U'; }
+
+(async()=>{
+  const all = await fetchAll();
+  const out = [];
   for(const m of all){
     try{
-      const cat = String(m.category||m.categories||'').toLowerCase();
-      const question = m.question || m.title || '';
-      const end = new Date(m.endDate || m.end_date || m.expirationDate || m.expiration_date);
-      if(!question || !end || isNaN(end)) continue;
-      const hours = (end - now)/36e5;
-      if(hours < 2 || hours > 72) continue;
-      const liquidity = Number(m.liquidity || m.liquidityNum || 0);
-      const volume = Number(m.volume || m.volumeNum || m.volume24hr || 0);
-      const lv = Math.max(liquidity, volume);
-      if(lv < 10000) continue;
-      const tokens = m.tokens || [];
-      if(tokens.length < 2) continue;
-      const prices = tokens.map(t => ({outcome:t.outcome, price:Number(t.price)})).filter(t => Number.isFinite(t.price));
-      if(prices.length < 2) continue;
-      prices.sort((a,b)=>b.price-a.price);
-      const top=prices[0], second=prices[1];
-      if(top.price < 0.80 || top.price > 0.96) continue;
-      const spread = Number(m.spread ?? m.bestAskMinusBestBid ?? m.priceSpread ?? NaN);
-      const useSpread = Number.isFinite(spread) ? spread : Math.abs(top.price + second.price - 1);
-      if(useSpread > 0.008) continue;
-      const text = (cat + ' ' + (m.events||[]).map(e=>e?.title||'').join(' ') + ' ' + question).toLowerCase();
-      let klass = null;
-      if(/politic|election|president|senate|house|governor|mayor|minister|parliament|trump|biden|rfk|民主|共和/.test(text)) klass='政治';
-      else if(/sport|soccer|football|nba|nfl|mlb|nhl|tennis|golf|ufc|fight|f1|formula 1|champions league|premier league|laliga|serie a|bundesliga|ncaa|march madness/.test(text)) klass='体育';
-      else if(/crypto|bitcoin|btc|eth|ethereum|solana|xrp|doge|token|airdrop|fed rate cut|blockchain|stablecoin|binance|coinbase/.test(text)) klass='加密';
-      else continue;
-      if(m.closed || m.archived || m.enableOrderBook === false) continue;
-      picks.push({
-        id:m.id,
-        market:question.replace(/s+/g,' ').trim(),
-        category:klass,
-        direction:top.outcome,
-        prob:top.price,
-        spread:useSpread,
-        liquidity:liquidity,
-        end:end.toISOString()
-      });
+      const category = classify(m);
+      if(!category) continue;
+      if(!m.acceptingOrders || m.closed || !m.active || m.archived) continue;
+      const end = new Date(m.endDate);
+      const hrs = (end - NOW)/36e5;
+      if(!(hrs >= 2 && hrs <= 72)) continue;
+      const liq = Number(m.liquidityNum ?? m.liquidityClob ?? m.liquidity ?? 0);
+      const vol = Number(m.volumeNum ?? m.volumeClob ?? m.volume ?? 0);
+      if(Math.max(liq, vol) < 10000) continue;
+      const prices = parseArr(m.outcomePrices).map(Number);
+      const outcomes = parseArr(m.outcomes);
+      if(prices.length !== 2 || outcomes.length !== 2) continue;
+      const bestIdx = prices[0] >= prices[1] ? 0 : 1;
+      const win = prices[bestIdx];
+      if(!(win >= 0.80 && win <= 0.96)) continue;
+      const spread = Number(m.spread ?? 999);
+      if(!(spread <= 0.008)) continue;
+      const direction = outcomes[bestIdx];
+      const line = `${m.question}｜${category}｜${direction}｜${fmtPct(win)}｜${fmtSpread(spread)}｜${fmtLiq(Math.max(liq, vol))}｜${end.toISOString().replace('.000','')}`;
+      out.push({id:String(m.id), line, win, spread, liq:Math.max(liq,vol), end:end.toISOString()});
     }catch{}
   }
-  picks.sort((a,b)=>new Date(a.end)-new Date(b.end));
-  console.log(JSON.stringify({count:all.length,picks},null,2));
-})().catch(err=>{ console.error(String(err.stack||err)); process.exit(1); });
+  out.sort((a,b)=> a.end.localeCompare(b.end) || b.win-a.win || a.spread-b.spread);
+
+  let prev = {items:{}};
+  try { prev = JSON.parse(fs.readFileSync(STATE_PATH,'utf8')); } catch {}
+  const prevItems = prev.items || {};
+  const nextItems = {};
+  const lines = [];
+  for(const item of out){
+    nextItems[item.id] = {line:item.line, win:item.win, spread:item.spread, liq:item.liq, end:item.end};
+    const p = prevItems[item.id];
+    const changed = !p || p.line !== item.line;
+    if(changed) lines.push(item.line);
+  }
+
+  fs.mkdirSync('/root/.openclaw/workspace/data',{recursive:true});
+  fs.writeFileSync(STATE_PATH, JSON.stringify({updatedAt:new Date().toISOString(), items:nextItems}, null, 2));
+  console.log(lines.length ? lines.join('\n') : 'NO_REPLY');
+})().catch(()=>{ console.log('NO_REPLY'); });
