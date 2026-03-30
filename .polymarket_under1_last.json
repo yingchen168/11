@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "market": "BitBoy convicted?",
+    "category": "加密",
+    "direction": "No",
+    "prob": 0.8505,
+    "spread": 0.001,
+    "liq": 4674.94031,
+    "vol": 302021.1456339961,
+    "end": "2026-03-31 12:00 UTC",
+    "slug": "bitboy-convicted"
+  }
+]
