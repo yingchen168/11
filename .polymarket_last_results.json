@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-03-30T22:53:00.000Z",
+  "items": [
+    {
+      "key": "693837",
+      "line": "Will the maximum Arctic sea ice extent this winter be between 14.2m & 14.4m square kilometers?｜加密｜Yes｜94.5%｜0.8%｜12444U｜2026-04-01T00:00:00Z",
+      "question": "Will the maximum Arctic sea ice extent this winter be between 14.2m & 14.4m square kilometers?",
+      "category": "加密",
+      "direction": "Yes",
+      "win": 0.945,
+      "spread": 0.008,
+      "liquidity": 12444.109677000011,
+      "endDate": "2026-04-01T00:00:00Z",
+      "updatedAt": "2026-03-30T22:53:57.013375Z"
+    }
+  ]
+}
