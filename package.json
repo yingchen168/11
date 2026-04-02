@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ethers": "^6.16.0"
+    "@polymarket/sdk": "^8.0.1",
+    "axios": "^1.14.0",
+    "ethers": "^6.16.0",
+    "web3": "^4.16.0"
   }
 }
