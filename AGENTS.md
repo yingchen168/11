@@ -228,3 +228,18 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 - If one data source fails, silently try alternative sources.
 - If all sources are unavailable, return a user-safe summary instead of technical errors.
 - For scheduled monitoring tasks, prefer `NO_REPLY` when there is no verified update.
+
+<!-- WEB-TOOLS-STRATEGY-START -->
+### Web Tools Strategy (CRITICAL)
+
+**Before using web_search/web_fetch/browser, you MUST `read workspace/skills/web-tools-guide/SKILL.md`!**
+
+**Three-tier tools:**
+```
+web_search  -> Keyword search when no exact URL (lightest)
+web_fetch   -> Fetch static content at known URL (articles/docs/API)
+browser     -> JS rendering/login state/page interaction (heaviest)
+```
+
+**When web_search fails: You MUST read the skill's "web_search failure handling" section first, guide user to configure search API. Only fall back after user explicitly refuses.**
+<!-- WEB-TOOLS-STRATEGY-END -->

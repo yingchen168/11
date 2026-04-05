@@ -40,6 +40,10 @@
     "ai-news-research": {
       "version": "1.0.0",
       "installedAt": 1772548740969
+    },
+    "web-tools-guide": {
+      "version": "1.0.0",
+      "installedAt": 1775366790210
     }
   }
 }
