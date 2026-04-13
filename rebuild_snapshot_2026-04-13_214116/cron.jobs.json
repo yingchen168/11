@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "c091f20e-4816-429a-9dfa-eb8abd3f9fa1",
+      "name": "ai-mainlines-daily",
+      "description": "每日AI三主线跟踪：基础设施资本、Agent化、多模态低成本",
+      "enabled": false,
+      "createdAtMs": 1772525563316,
+      "updatedAtMs": 1773736440283,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 21 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请生成《AI三条主线一手源日报》（中文，简洁直接，只写当天可核验的一手源信息）。主线：1) 基础设施与资本重构（OpenAI等）2) Agent化能力升级（Anthropic/Claude等）3) 多模态低成本普及（Gemini/Perplexity等）。\n\n严格规则：\n- 只使用可核验的一手源：公司官方博客/新闻页/更新日志/官方X账号/官方开发者文档。\n- 不要因为缺少某个搜索API就整篇写“数据不足”；直接用当前可用的 web fetch / browser 去逐站抓取官方源。\n- 允许部分产出：哪家公司当天有可核验更新，就写哪家；没有更新的公司可以不硬凑。\n- 禁止写“需要配置 PERPLEXITY_API_KEY”这类环境说明；用户只关心日报内容，不关心工具细节。\n- 如果某家公司当天没有找到可核验一手更新，就简短写“今日未见可核验一手更新”，不要展开空泛背景。\n- 如果当天只找到 1-2 条可核验更新，也照样正常出日报，不要因为覆盖不全就判定整篇失败。\n- 若全部主线都没有找到当天一手源，再输出“今日未检索到可核验一手更新”，并附“已检查来源”清单。\n\n优先检查这些官方来源：\n- OpenAI: openai.com/news / openai.com/index / platform.openai.com/docs / 官方X\n- Anthropic: anthropic.com/news / docs.anthropic.com / 官方X\n- Google/Gemini: blog.google / developers.googleblog.com / ai.google / 官方X\n- Perplexity: perplexity.ai/hub / 官方博客 / 官方X\n\n输出格式：\nA. 今日可核验要点（3-6条，若不足3条就按实际条数）\nB. 项目清单（项目名 / 今天的可核验更新 / 一手源链接 / 可能影响）\nC. 值得跟进 Top3 与理由（仅基于今天确有一手更新的项目）\nD. 明日观察点\nE. 已检查来源（列出今天实际核查过的官方站点/账号）\n\n禁止编造、禁止传闻、禁止把二手媒体当一手源。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "5684577282"
+      },
+      "state": {
+        "lastRunAtMs": 1773581400003,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 43142,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "b29012d0-0520-4da1-8a28-b11839e2658d",
+      "name": "ai-crypto-x-daily-brief",
+      "description": "每日10点：AI+区块链+X 一手源简报",
+      "enabled": false,
+      "createdAtMs": 1772549777162,
+      "updatedAtMs": 1773736440283,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请生成《AI+区块链+X每日10点简报》（中文，简洁直接，800-1200字），并投递给用户。\n\n目标：每天10点给出可核验、可行动、可转发的日简报。\n\n必须包含4部分：\nA) AI/区块链当天一手源要点：优先官方博客、公告页、开发者文档、官方X；只写当天可核验更新。\nB) Binance/OKX 合约与交易侧重点：仅写今天能核验的合约异动/下架/新上线/资金费率/OI/爆仓方向；没有就写‘暂无可核验异动’。\nC) 重点账号动态：必须覆盖 @elonmusk @realDonaldTrump @nntaleb @naval @cz_binance @heyibinance @turingou @bwenews ，对每个账号给‘今日是否有高价值更新（有/无）’，有则给1条核心信息+链接。\nD) 今日可执行动作 Top3：触发条件 / 风险点 / 不满足则观望。\n\n严格规则：\n- 只写可验证信息，禁止编造。\n- 允许部分产出：哪一块今天有一手源就写哪一块，不要因为覆盖不全就整篇判定失败。\n- 不要输出工具/环境配置缺失，不要提 PERPLEXITY_API_KEY。\n- 若某部分无有效更新，写‘暂无高价值更新’或‘暂无可核验异动’。\n- 最后附一段可转发摘要（80-120字）。\n- 若全篇都无可核验新增，再输出‘今日整体暂无可核验新增’，并附已检查来源清单。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "5684577282"
+      },
+      "state": {
+        "lastRunAtMs": 1773712800003,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 58717,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "31f537fa-b5ab-4914-8c51-9653f05c14ef",
+      "name": "polymarket-under1-near-expiry",
+      "description": "Polymarket 监控（政治/体育/加密，按用户阈值）",
+      "enabled": false,
+      "createdAtMs": 1772679701308,
+      "updatedAtMs": 1775269027700,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 1800000,
+        "anchorMs": 1772797661844
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "任务：Polymarket 机会监控。只监控 政治 / 体育 / 加密 三类市场。\n\n硬性约束：\n- 禁止使用 web_search、browser、网页抓取、PERPLEXITY、任何网站页面访问。\n- 只允许使用 shell + curl + jq 访问官方 API：`https://gamma-api.polymarket.com/events`。\n- 只基于 API 返回的数据输出结果；不得要求配置额外 API key；不得输出技术错误。\n- API 失败最多重试 1 次；仍失败则只输出 `NO_REPLY`。\n\n筛选条件（必须全部满足，严格按用户要求）：\n- 主方向胜率 >= 0.80 且 <= 0.96\n- 盘口差价 <= 0.008（0.8%）\n- 交易量 / 流动性 >= 10000U（`volumeNum >= 10000` 或 `liquidityNum >= 10000`）\n- 距离到期 >= 2 小时 且 <= 72 小时\n- 仅推送当前仍可交易、且有明确方向优势的市场\n\n分类规则：\n- event.tags 里包含 `politics` => 分类 `政治`\n- event.tags 里包含 `crypto` => 分类 `加密`\n- 体育没有统一总标签时，按 `event.tags`、`event.title`、`market.question` 中的体育关键词识别：`nba|nfl|mlb|nhl|ufc|soccer|football|tennis|golf|baseball|basketball|hockey|f1|formula 1|champions league|premier league|laliga|bundesliga|serie a`\n\n执行步骤（严格照做）：\n1. 直接运行下面这条 shell 命令，不要改写逻辑：\n\ncurl -sS \"https://gamma-api.polymarket.com/events?limit=200&active=true&closed=false&archived=false\" | jq -r '\n  [ .[] as $e\n    | (($e.tags // []) | map((.slug // \"\") | ascii_downcase)) as $tags\n    | (($e.title // \"\") + \" \" + ($e.slug // \"\")) as $eventTextRaw\n    | ($eventTextRaw | ascii_downcase) as $eventText\n    | ($e.markets // [])[] as $m\n    | (($m.question // \"\") | ascii_downcase) as $q\n    | (($m.outcomes | if type==\"string\" then fromjson else . end) // []) as $outs\n    | (($m.outcomePrices | if type==\"string\" then fromjson else . end) // []) as $prices\n    | select(($outs|length) >= 2 and ($prices|length) >= 2)\n    | ($prices[0] | tonumber?) as $p0\n    | ($prices[1] | tonumber?) as $p1\n    | select($p0 != null and $p1 != null)\n    | (if ($tags | index(\"politics\")) != null then \"政治\"\n       elif ($tags | index(\"crypto\")) != null then \"加密\"\n       elif (($tags | join(\",\") + \",\" + $eventText + \",\" + $q) | test(\"nba|nfl|mlb|nhl|ufc|soccer|football|tennis|golf|baseball|basketball|hockey|f1|formula 1|champions league|premier league|laliga|bundesliga|serie a\"; \"i\")) then \"体育\"\n       else \"\" end) as $cat\n    | select($cat != \"\")\n    | (if $p0 >= $p1 then {dir: ($outs[0]|tostring), prob: $p0} else {dir: ($outs[1]|tostring), prob: $p1} end) as $best\n    | (($m.endDate // \"\") | fromdateiso8601?) as $endTs\n    | select($endTs != null)\n    | ($endTs - now) as $ttl\n    | select($ttl >= 7200 and $ttl <= 259200)\n    | (($m.spread // ((($m.bestAsk // 999) - ($m.bestBid // 0)))) | tonumber?) as $spread\n    | select($spread != null and $spread <= 0.008)\n    | (($m.volumeNum // 0) | tonumber?) as $vol\n    | (($m.liquidityNum // 0) | tonumber?) as $liq\n    | select((($vol // 0) >= 10000) or (($liq // 0) >= 10000))\n    | select($best.prob >= 0.80 and $best.prob <= 0.96)\n    | {\n        slug: ($m.slug // \"\"),\n        market: ($m.question // $e.title // \"\"),\n        category: $cat,\n        direction: $best.dir,\n        prob: $best.prob,\n        spread: $spread,\n        volume: ($vol // 0),\n        liquidity: ($liq // 0),\n        endDate: ($m.endDate // \"\")\n      }\n  ]\n  | unique_by(.slug)\n  | sort_by(-.prob, -.volume, -.liquidity)\n  | .[:20]\n  | if length == 0 then \"NO_REPLY\" else .[] | \"\\(.market)｜\\(.category)｜\\(.direction)｜\\((.prob*100)|round/100)%｜\\((.spread*100)|round/100)%｜V:\\(.volume|floor)/L:\\(.liquidity|floor)｜\\(.endDate)｜\\(.slug)\" end\n'\n\n2. 如果命令输出是 `NO_REPLY`，你只回复：`NO_REPLY`\n3. 如果命令输出是多行机会列表，你就原样逐行输出，不要补充任何解释、前言、后记。\n",
+        "timeoutSeconds": 240,
+        "model": "valueclue/gemini-2.5-flash-nothinking"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "5684577282"
+      },
+      "state": {
+        "lastRunAtMs": 1775269016510,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 11190,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": false
+      }
+    },
+    {
+      "id": "6feada9a-5727-4e14-98c4-44f899d0fcc5",
+      "name": "x-heavy-accounts-realtime",
+      "description": "重点X账号高质量推文实时推送",
+      "enabled": false,
+      "createdAtMs": 1772720320190,
+      "updatedAtMs": 1773736440283,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 3600000,
+        "anchorMs": 1772797645972
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "任务：重点X账号高质量推文实时推送。\n\n账号：@elonmusk @realDonaldTrump @nntaleb @naval @cz_binance @heyibinance @turingou @bwenews\n\n抓取与时限规则：\n- 每个账号独立处理，单账号硬预算 35-45 秒。\n- 优先使用 6551/opentwitter 主源；仅当主源不可用或明显陈旧时，才允许再试 1 个 fallback（xcancel / r.jina / nitter 三选一）。\n- 每个账号最多试 2 个来源；卡住就跳过该账号，继续下一个。\n- 绝不允许一个账号拖死整轮。\n\n筛选口径：只报政策/监管/产品发布/重大观点/明确交易影响。娱乐噪音、重复转发、无实质信息的互动一律过滤。\n\n输出：\n- 有新增时，每条严格 4 行：账号 / 链接 / 核心信息 / 影响判断。\n- 允许部分覆盖：只推送已验证账号的高质量更新。\n- 无新增或无可验证高质量内容 -> NO_REPLY。\n- 禁止向用户输出任何技术错误。",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "5684577282"
+      },
+      "state": {
+        "lastRunAtMs": 1773734460762,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 65308,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": true
+      },
+      "failureAlert": {
+        "after": 6,
+        "channel": "telegram",
+        "to": "5684577282",
+        "cooldownMs": 43200000,
+        "mode": "announce"
+      }
+    },
+    {
+      "id": "3b020cfb-ee0b-4b02-8758-c93568b140a1",
+      "name": "binance-okx-contract-anomaly-watch",
+      "description": "Binance/OKX 合约异动与公告监测",
+      "enabled": false,
+      "createdAtMs": 1772830960473,
+      "updatedAtMs": 1773736440283,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 1800000,
+        "anchorMs": 1772830960473
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "任务：Binance / OKX 合约异动与公告监测。每30分钟检查一次，只推送可验证新增。\n\n重点监控：\n- 合约上新/下架\n- 资金费率异常\n- 未平仓量（OI）异常变化\n- 大额爆仓方向性异常\n- 交易所官方风险公告、维护、限制、充提异常中与合约交易强相关的事件\n\n来源优先级：\n1) Binance 官方公告 / Futures 页面 / 官方帮助中心\n2) OKX 官方公告 / Status / Help Center\n3) 公开可验证市场页面与交易数据页\n- 单一来源失败时必须跳过继续，不得整轮报错。\n\n推送条件：\n- 仅推送今天新出现、且会影响交易决策的事件。\n- 24小时内同事件不重复。\n- 仅在有明确新增时推送；否则 NO_REPLY。\n\n输出格式：类型｜交易所｜事件｜时间｜来源链接｜影响｜风险级别。\n禁止输出 Web Fetch failed、timeout 等技术错误。",
+        "timeoutSeconds": 240
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "5684577282",
+        "bestEffort": true
+      },
+      "state": {
+        "lastRunAtMs": 1773735144692,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 30298,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 4,
+        "lastDelivered": true,
+        "lastError": "⚠️ 🌐 Browser failed"
+      },
+      "failureAlert": {
+        "after": 3,
+        "channel": "telegram",
+        "to": "5684577282",
+        "cooldownMs": 21600000,
+        "mode": "announce"
+      }
+    }
+  ]
+}
