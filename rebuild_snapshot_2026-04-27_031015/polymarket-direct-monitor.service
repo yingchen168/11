@@ -1,0 +1,9 @@
+[Unit]
+Description=Direct Polymarket monitor to Telegram
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/root/.openclaw/scripts/polymarket_direct_monitor.sh
+WorkingDirectory=/root/.openclaw/workspace

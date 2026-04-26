@@ -1,0 +1,6 @@
+[Unit]
+Description=Backup OpenClaw workspace to GitHub when changed
+
+[Service]
+Type=oneshot
+ExecStart=/root/.openclaw/scripts/backup_openclaw_to_github.sh
